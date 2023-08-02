@@ -8,7 +8,7 @@ function NewUseRegister() {
   };
   return (
     <>
-      <button onClick={handleRegisterNewUser} className="header-btnAdd">
+      <button onClick={handleRegisterNewUser} className="header-Btn-Add">
         Add New Customer
       </button>
     </>

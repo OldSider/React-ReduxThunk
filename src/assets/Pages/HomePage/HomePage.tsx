@@ -8,17 +8,21 @@ import InputSearch from "./Components/InputSearch/InputSearch";
 import ExitButton from "./Components/ExitButton/ExitButton";
 import Customers from "../../Interface/HomeCustomerInterface";
 
+import "./Components/Style/HomePage.css";
+import ModalMoreInfo from "./Components/Modal/MoreInfo/ModalMoreInfo";
+
 function HomePage() {
-  const [selectedCustomerId, setSelectedCustomerId] = useState(0);
-  const [selectedCustomer, setSelectedCustomer] = useState<Customers | undefined>();
+  const [openModal, setOpenModal] = useState(false);
+  const [, setSelectedCustomerId] = useState(0);
+  const [selectedCustomer, setSelectedCustomer] = useState<Customers>();
 
   const dispatch = useAppDispatch();
-
+  const searchInput = useAppSelector((state) => state.searchBar.search);
   const loading = useAppSelector((state) => state.getAll.loading);
+
   const customerData = useAppSelector(
     (state) => state.getAll.data
   ) as Customers[];
-  const searchInput = useAppSelector((state) => state.searchBar.search);
 
   useEffect(() => {
     dispatch(getCustomersData());
@@ -35,20 +39,9 @@ function HomePage() {
       <section>
         <div className="wrapper-home">
           <div className="div-btn">
-            <input
-              className="header-filter"
-              type="text"
-              placeholder="Search Customer"
-              onChange={InputSearch}
-            />
-
-            <button className="header-btnAdd" onClick={NewUseRegister}>
-              Add New Customer
-            </button>
-
-            <button className="header-btn" onClick={ExitButton}>
-              Exit
-            </button>
+            <InputSearch />
+            <NewUseRegister />
+            <ExitButton />
           </div>
           {!loading ? (
             <>
@@ -71,6 +64,7 @@ function HomePage() {
                           onClick={() => {
                             setSelectedCustomerId(customer.id);
                             setSelectedCustomer(customer);
+                            setOpenModal(true);
                           }}
                         >
                           View
@@ -82,11 +76,21 @@ function HomePage() {
               </table>
             </>
           ) : (
-            <div>Loading...</div>
+            <section>
+              <div className="load-block">
+                <h1>Loading...</h1>
+              </div>
+            </section>
           )}
-          
         </div>
       </section>
+      <ModalMoreInfo
+        isOpen={openModal}
+        setOpenModal={() => {
+          setOpenModal(!openModal);
+        }}
+        selectedCustomer={selectedCustomer}
+      />
     </>
   );
 }

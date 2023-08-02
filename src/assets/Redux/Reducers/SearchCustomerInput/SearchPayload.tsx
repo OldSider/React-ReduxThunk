@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const searchValueSlice = createSlice({
-  name: "seartcInput",
+  name: "searchInput",
   initialState,
   reducers: {
     setSearch: (state, action) => {

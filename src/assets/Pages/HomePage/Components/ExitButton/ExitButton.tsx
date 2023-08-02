@@ -9,7 +9,7 @@ function ExitButton() {
 
   return (
     <>
-      <button onClick={handleExit}>Exit</button>
+      <button onClick={handleExit} className="header-btn">Exit</button>
     </>
   );
 }

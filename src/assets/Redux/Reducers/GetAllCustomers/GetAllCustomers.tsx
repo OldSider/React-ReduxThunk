@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import getCustomersData from "./Components/AsyncThunk";
 
 const initialState = {
-  data: [],
+  data: [] ,
   message: "",
   loading: false,
   isSuccess: false,

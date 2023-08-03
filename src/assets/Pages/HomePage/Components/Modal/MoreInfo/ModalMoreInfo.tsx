@@ -1,6 +1,7 @@
 import ModalMoreInfoProps from "../../../../../Interface/ModalMoreInfo";
+import DeleteButton from "./Components/DeleteButton/DeletButton";
 
-import "./Style/MoreInfo.css";
+import "./Components/Style/MoreInfo.css";
 
 function ModalMoreInfo(props: ModalMoreInfoProps) {
   const { isOpen, setOpenModal, selectedCustomer } = props;
@@ -73,6 +74,11 @@ function ModalMoreInfo(props: ModalMoreInfoProps) {
               >
                 Close
               </button>
+
+              <DeleteButton
+                customer={selectedCustomer ? selectedCustomer.id : undefined}
+                openModal={setOpenModal}
+              />
             </div>
           </div>
         </div>

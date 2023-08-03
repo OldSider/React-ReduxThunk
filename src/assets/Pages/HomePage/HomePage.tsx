@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 
 import getCustomersData from "../../Redux/Reducers/GetAllCustomers/Components/AsyncThunk";
@@ -26,7 +27,7 @@ function HomePage() {
 
   useEffect(() => {
     dispatch(getCustomersData());
-  }, [dispatch]);
+  }, [getCustomersData]);
 
   const filter = customerData.filter(
     (customer) =>

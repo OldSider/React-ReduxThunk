@@ -21,7 +21,7 @@ function LoginPage() {
   const handleEmailInput = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(setEmail(event.target.value));
   };
-
+  
   return (
     <>
       <section>

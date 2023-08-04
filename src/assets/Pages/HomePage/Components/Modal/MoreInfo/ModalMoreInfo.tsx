@@ -1,9 +1,13 @@
+import { useState } from "react";
 import ModalMoreInfoProps from "../../../../../Interface/ModalMoreInfo";
+import ModalEditInfo from "../EditInfo/ModalEditInfo";
 import DeleteButton from "./Components/DeleteButton/DeletButton";
 
 import "./Components/Style/MoreInfo.css";
 
 function ModalMoreInfo(props: ModalMoreInfoProps) {
+  const [editModal, setEditModal] = useState(false);
+
   const { isOpen, setOpenModal, selectedCustomer } = props;
 
   if (isOpen) {
@@ -75,6 +79,15 @@ function ModalMoreInfo(props: ModalMoreInfoProps) {
                 Close
               </button>
 
+              <button
+                className="modalBtn"
+                onClick={() => {
+                  setEditModal(true);
+                }}
+              >
+                Update
+              </button>
+
               <DeleteButton
                 customer={selectedCustomer ? selectedCustomer.id : undefined}
                 openModal={setOpenModal}
@@ -82,6 +95,13 @@ function ModalMoreInfo(props: ModalMoreInfoProps) {
             </div>
           </div>
         </div>
+        <ModalEditInfo
+          customer={selectedCustomer ? selectedCustomer.id : undefined}
+          openEditModal={editModal}
+          setEditModal={() => {
+            setEditModal(!editModal);
+          }}
+        />
       </>
     );
   }

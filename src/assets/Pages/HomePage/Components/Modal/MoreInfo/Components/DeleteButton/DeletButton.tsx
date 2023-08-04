@@ -20,7 +20,9 @@ function DeleteButton(props: DeleteButtonProps) {
 
   return (
     <>
-      <button onClick={handleDelete}>Delete Customer</button>
+      <button onClick={handleDelete} className="modalBtn">
+        Delete
+      </button>
     </>
   );
 }

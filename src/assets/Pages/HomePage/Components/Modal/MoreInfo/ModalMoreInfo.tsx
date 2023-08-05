@@ -96,7 +96,7 @@ function ModalMoreInfo(props: ModalMoreInfoProps) {
           </div>
         </div>
         <ModalEditInfo
-          customer={selectedCustomer ? selectedCustomer.id : undefined}
+          customer={selectedCustomer}
           openEditModal={editModal}
           setEditModal={() => {
             setEditModal(!editModal);

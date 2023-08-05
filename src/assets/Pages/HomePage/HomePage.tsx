@@ -5,12 +5,12 @@ import getCustomersData from "../../Redux/Reducers/GetAllCustomers/Components/As
 import NewUseRegister from "./Components/RegisterNewUserButton/NewUseRegister";
 import useAppDispatch from "../../Hook/UseAppDispatch";
 import useAppSelector from "../../Hook/UseAppSelector";
+import ModalMoreInfo from "./Components/Modal/MoreInfo/ModalMoreInfo";
 import InputSearch from "./Components/InputSearch/InputSearch";
 import ExitButton from "./Components/ExitButton/ExitButton";
 import Customers from "../../Interface/HomeCustomerInterface";
 
 import "./Components/Style/HomePage.css";
-import ModalMoreInfo from "./Components/Modal/MoreInfo/ModalMoreInfo";
 
 function HomePage() {
   const [openModal, setOpenModal] = useState(false);

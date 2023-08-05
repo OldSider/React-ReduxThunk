@@ -1,17 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import validator from "validator";
 import axios from "axios";
 
 import { createCustomerReducer } from "../../Redux/Reducers/CreateCustomer/Components/AsyncThunk";
 import useAppDispatch from "../../Hook/UseAppDispatch";
-
-import "./Components/Style/Register.css";
 import FormData from "../../Interface/RegisterCustomerInterface";
-import { useNavigate } from "react-router-dom";
 
-function RegisterPage() {
+function RegisterNewCustomer() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -40,15 +39,23 @@ function RegisterPage() {
 
   const onSubmit = (data: FormData[]) => {
     dispatch(createCustomerReducer(data));
-    navigate("/");
+    navigate("/home");
   };
 
   return (
     <>
       <div className="Register-wrapper">
         <div>
-          <h1>Register</h1>
-
+          <div className="newCustomer-Block">
+            <h1>Register</h1>
+            <button
+              onClick={() => {
+                navigate("/home");
+              }}
+            >
+              Back
+            </button>
+          </div>
           <div>
             <div className="Register-block">
               <input
@@ -179,4 +186,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default RegisterNewCustomer;
